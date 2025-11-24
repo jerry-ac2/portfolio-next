@@ -157,8 +157,10 @@ export default function AdminDashboard() {
                         </td>
                         <td className="p-4 align-middle text-right">
                           <div className="flex justify-end gap-2">
-                            <Button variant="ghost" size="icon">
-                              <Edit className="h-4 w-4" />
+                            <Button variant="ghost" size="icon" asChild>
+                              <Link href={`/admin/edit/${project.id}`}>
+                                <Edit className="h-4 w-4" />
+                              </Link>
                             </Button>
                             <Button
                               variant="ghost"
