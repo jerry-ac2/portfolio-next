@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <img
               src={project.imageUrl}
               alt={project.title}
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center text-muted-foreground/30 font-bold text-2xl">

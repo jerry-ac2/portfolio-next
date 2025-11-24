@@ -207,7 +207,7 @@ export default function NewProjectPage() {
                   <img
                     src={formData.imageUrl}
                     alt="Preview"
-                    className="object-cover w-full h-full"
+                    className="object-contain w-full h-full"
                   />
                 </div>
               )}

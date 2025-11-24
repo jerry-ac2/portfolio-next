@@ -82,7 +82,7 @@ export default function ProjectsPage() {
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="object-cover w-full h-full transition-transform group-hover:scale-105"
+                      className="object-contain w-full h-full"
                     />
                   ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary flex items-center justify-center text-muted-foreground/50 font-bold text-xl">

@@ -67,7 +67,7 @@ export default function ContactPage() {
             Have a project in mind or want to collaborate? Feel free to reach
             out! I'll get back to you as soon as possible.
           </p>
-        </motion.div>
+        </motion.div>                          
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
