@@ -1,7 +1,4 @@
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { StarfieldBackground } from "@/components/starfield-background";
-import { SocialSidebar } from "@/components/social-sidebar";
+import Link from "next/link";
 
 export default function PublicLayout({
   children,
@@ -10,13 +7,16 @@ export default function PublicLayout({
 }) {
   return (
     <>
-      <StarfieldBackground />
-      <SocialSidebar />
-      <div className="relative z-10">
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-      </div>
+      {/* Minimal header - just the logo */}
+      <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-24 py-6">
+        <Link
+          href="/"
+          className="text-lg font-medium hover:text-muted-foreground transition-colors"
+        >
+          jeremiah.
+        </Link>
+      </header>
+      <main>{children}</main>
     </>
   );
 }

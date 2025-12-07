@@ -20,98 +20,82 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+  @keyframes shimmer {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
 }
 
 :root {
-  /* Fallback colors for older browsers (Chrome 60+, Safari 12+) */
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(0, 0%, 15%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(0, 0%, 15%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(0, 0%, 15%);
-  --primary: hsl(0, 0%, 21%);
-  --primary-foreground: hsl(0, 0%, 98%);
-  --secondary: hsl(0, 0%, 97%);
-  --secondary-foreground: hsl(0, 0%, 21%);
-  --muted: hsl(0, 0%, 97%);
-  --muted-foreground: hsl(0, 0%, 56%);
-  --accent: hsl(0, 0%, 97%);
-  --accent-foreground: hsl(0, 0%, 21%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --border: hsl(0, 0%, 92%);
-  --input: hsl(0, 0%, 92%);
-  --ring: hsl(0, 0%, 87%);
+  /* Premium Dark Theme */
+  --background: #030303; /* Almost pitch black */
+  --foreground: #ffffff;
 
-  /* Modern browsers override with better OKLCH colors */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.87 0 0);
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+
+  --popover: #0a0a0a;
+  --popover-foreground: #ffffff;
+
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+
+  --muted: #171717;
+  --muted-foreground: #737373; /* Neutral gray */
+
+  --accent: #262626;
+  --accent-foreground: #ffffff;
+
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ffffff;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #ffffff;
+
   --radius: 0.75rem;
-}
-
-.dark {
-  /* Fallback colors for older browsers */
-  --background: hsl(0, 0%, 0%); /* Pure black */
-  --foreground: hsl(0, 0%, 100%); /* Pure white */
-  --card: hsl(0, 0%, 10%); /* Very dark gray */
-  --card-foreground: hsl(0, 0%, 100%); /* Pure white */
-  --popover: hsl(0, 0%, 8%); /* Almost black */
-  --popover-foreground: hsl(0, 0%, 100%); /* Pure white */
-  --primary: hsl(82, 84%, 67%); /* Lemon green */
-  --primary-foreground: hsl(0, 0%, 10%); /* Dark for contrast */
-  --secondary: hsl(0, 0%, 15%); /* Dark gray */
-  --secondary-foreground: hsl(0, 0%, 100%); /* Pure white */
-  --muted: hsl(0, 0%, 15%); /* Dark gray */
-  --muted-foreground: hsl(0, 0%, 60%); /* Medium gray */
-  --accent: hsl(0, 0%, 20%); /* Slightly lighter gray */
-  --accent-foreground: hsl(0, 0%, 100%); /* Pure white */
-  --destructive: hsl(0, 84%, 60%); /* Red */
-  --destructive-foreground: hsl(0, 0%, 100%); /* Pure white */
-  --border: hsl(0, 0%, 20%); /* Dark gray border */
-  --input: hsl(0, 0%, 20%); /* Dark gray input */
-  --ring: hsl(82, 84%, 67%); /* Lemon green focus */
-
-  /* Modern browsers override with better OKLCH colors */
-  --background: oklch(0 0 0);
-  --foreground: oklch(1 0 0);
-  --card: oklch(0.1 0 0);
-  --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.08 0 0);
-  --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.85 0.2 135);
-  --primary-foreground: oklch(0.1 0 0);
-  --secondary: oklch(0.15 0 0);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.15 0 0);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.2 0 0);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.55 0.25 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.2 0 0);
-  --ring: oklch(0.85 0.2 135);
 }
 
 @layer base {
@@ -120,59 +104,39 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(
+      circle at 50% 0%,
+      #1a1a1a 0%,
+      transparent 75%
+    );
+    min-height: 100vh;
   }
 }
 
-/* Custom styles */
-html {
-  scroll-behavior: smooth;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-/* Gradient text utilities */
-.gradient-text {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-green-400 to-emerald-400;
+/* Utility Animations */
+.reveal-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-/* Animated gradient */
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient {
-  animation: gradient 8s ease infinite;
-}
-
-/* Slow spin animations */
-@keyframes spin-slow {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-@keyframes spin-reverse-slow {
-  from {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-
-.animate-spin-reverse-slow {
-  animation: spin-reverse-slow 15s linear infinite;
+/* Glassmorphism utility */
+.glass {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
