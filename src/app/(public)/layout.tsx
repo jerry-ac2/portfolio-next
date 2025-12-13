@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 export default function PublicLayout({
@@ -7,16 +9,17 @@ export default function PublicLayout({
 }) {
   return (
     <>
-      {/* Minimal header - just the logo */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-24 py-6">
-        <Link
-          href="/"
-          className="text-lg font-medium hover:text-muted-foreground transition-colors"
-        >
-          jeremiah.
-        </Link>
-      </header>
       <main>{children}</main>
+      <footer className="px-6 md:px-12 lg:px-24 py-16">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <p className="text-sm tracking-wide text-(--muted-foreground)">
+            © {new Date().getFullYear()} Jeremiah Egemonye
+          </p>
+          <p className="text-xs text-(--foreground-dim)">
+            Built with craft and care
+          </p>
+        </div>
+      </footer>
     </>
   );
 }
