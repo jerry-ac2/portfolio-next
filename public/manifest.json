@@ -1,0 +1,16 @@
+{
+  "name": "Jeremiah Egemonye",
+  "short_name": "JE",
+  "description": "Frontend and Mobile Developer portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#1a4d2e",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
