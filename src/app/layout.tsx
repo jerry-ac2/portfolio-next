@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Outfit, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Primary font - clean, modern sans-serif with personality
+const outfit = Outfit({
   subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Secondary font - subtle serif for headings that adds character
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -100,10 +98,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
-      >
+    <html lang="en" className={`${outfit.variable} ${sourceSerif.variable}`}>
+      <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Providers>{children}</Providers>
       </body>
     </html>
