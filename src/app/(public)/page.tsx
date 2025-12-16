@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Project } from "@/lib/data";
 import { ArrowUpRight, Github, ArrowRight } from "lucide-react";
@@ -18,176 +18,85 @@ import Navbar from "@/components/Navbar";
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
-  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height,
-        });
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 py-32 overflow-hidden hero-gradient"
-    >
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
-
-      {/* Floating orbs - respond to mouse */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large warm orb - top right */}
-        <div
-          className="absolute w-[500px] h-[500px] rounded-full float-1"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(200, 180, 160, 0.15) 0%, transparent 70%)",
-            top: "5%",
-            right: "10%",
-            transform: `translate(${(mousePosition.x - 0.5) * -30}px, ${
-              (mousePosition.y - 0.5) * -30
-            }px)`,
-            transition: "transform 0.3s ease-out",
-          }}
-        />
-
-        {/* Medium slate orb - bottom left */}
-        <div
-          className="absolute w-[400px] h-[400px] rounded-full float-2"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(100, 100, 120, 0.1) 0%, transparent 70%)",
-            bottom: "10%",
-            left: "5%",
-            transform: `translate(${(mousePosition.x - 0.5) * 20}px, ${
-              (mousePosition.y - 0.5) * 20
-            }px)`,
-            transition: "transform 0.3s ease-out",
-          }}
-        />
-
-        {/* Small accent orb - middle */}
-        <div
-          className="absolute w-[250px] h-[250px] rounded-full float-3"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(160, 140, 120, 0.12) 0%, transparent 70%)",
-            top: "40%",
-            right: "30%",
-            transform: `translate(${(mousePosition.x - 0.5) * 40}px, ${
-              (mousePosition.y - 0.5) * 40
-            }px)`,
-            transition: "transform 0.3s ease-out",
-          }}
-        />
-
-        {/* Tiny accent dot */}
-        <div
-          className="absolute w-3 h-3 rounded-full bg-[--accent-warm] opacity-30"
-          style={{
-            top: "30%",
-            left: "20%",
-            transform: `translate(${(mousePosition.x - 0.5) * 60}px, ${
-              (mousePosition.y - 0.5) * 60
-            }px)`,
-            transition: "transform 0.2s ease-out",
-          }}
-        />
-
-        {/* Another tiny dot */}
-        <div
-          className="absolute w-2 h-2 rounded-full bg-[--accent] opacity-20"
-          style={{
-            bottom: "35%",
-            right: "15%",
-            transform: `translate(${(mousePosition.x - 0.5) * -50}px, ${
-              (mousePosition.y - 0.5) * -50
-            }px)`,
-            transition: "transform 0.2s ease-out",
-          }}
-        />
+    <section className="relative min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
+      {/* Waving hand emoji - top left */}
+      <div className="absolute top-32 left-6 lg:left-24 text-5xl lg:text-6xl animate-pulse">
+        👋
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl">
-        {/* Name tag */}
-        <div
-          className={`mb-8 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <span className="inline-flex items-center gap-3 text-sm tracking-[0.15em] uppercase text-[--foreground-muted]">
-            <span className="w-8 h-px bg-[--foreground-muted]" />
-            Jeremiah Egemonye
-          </span>
-        </div>
+      {/* Main content */}
+      <div className="px-6 lg:px-24 pt-40 lg:pt-48 pb-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            {/* Left column - Text */}
+            <div>
+              {/* Main headline */}
+              <h1
+                className={`text-[clamp(3rem,10vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.03em] mb-8 transition-all duration-700 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+              >
+                Frontend
+                <br />
+                Developer.
+              </h1>
 
-        {/* Main headline */}
-        <h1
-          className={`text-[clamp(2.5rem,8vw,5.5rem)] font-medium leading-[1.05] tracking-[-0.03em] mb-8 transition-all duration-700 delay-100 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          Creative Frontend
-          <br />
-          <span className="text-[--accent-highlight]">Engineer</span>
-        </h1>
+              {/* Subtitle */}
+              <p
+                className={`text-lg lg:text-xl text-[#999] max-w-md leading-relaxed transition-all duration-700 delay-100 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+              >
+                I like to craft solid and scalable frontend products with{" "}
+                <span className="text-white">great user experiences</span>.
+              </p>
 
-        {/* Subtitle */}
-        <p
-          className={`text-lg md:text-xl text-[--foreground-muted] max-w-lg leading-relaxed mb-12 transition-all duration-700 delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          Building digital experiences with precision, clarity, and a focus on
-          what truly matters—the user.
-        </p>
+              {/* Stats row */}
+              <div
+                className={`grid grid-cols-2 gap-8 mt-16 pt-8 border-t border-[rgba(255,255,255,0.1)] transition-all duration-700 delay-200 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+              >
+                <div>
+                  <p className="text-sm text-[#666] leading-relaxed">
+                    Highly skilled at progressive enhancement, design systems &
+                    UI Engineering.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm text-[#666] leading-relaxed">
+                    Over a three years of experience building products for
+                    clients across several countries.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-        {/* CTA */}
-        <div
-          className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <a
-            href="#work"
-            className="group inline-flex items-center gap-2 px-6 py-3.5 bg-[--foreground-strong] text-[--background] text-sm tracking-wide hover:bg-[--accent-warm] transition-all duration-300"
-          >
-            View Work
-            <ArrowRight
-              size={16}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </a>
-          <a
-            href="mailto:jeremiahegemonye.dev@gmail.com"
-            className="inline-flex items-center gap-2 px-6 py-3.5 border border-[--border-strong] text-[--foreground-strong] text-sm tracking-wide hover:bg-[--surface] hover:border-[--foreground-muted] transition-all duration-300"
-          >
-            Get in Touch
-          </a>
-        </div>
-
-        {/* Scroll indicator */}
-        <div
-          className={`absolute bottom-12 left-0 transition-all duration-700 delay-500 ${
-            isVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <div className="flex items-center gap-3 text-xs text-[--foreground-subtle] tracking-widest uppercase">
-            <div className="w-px h-12 bg-[--border-strong] animate-pulse" />
-            Scroll
+            {/* Right column - Image placeholder */}
+            <div
+              className={`relative transition-all duration-700 delay-300 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              <div className="aspect-[4/5] bg-[#1a1a1a] rounded-sm overflow-hidden flex items-center justify-center">
+                <span className="text-[#333] text-sm">Your Photo Here</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
