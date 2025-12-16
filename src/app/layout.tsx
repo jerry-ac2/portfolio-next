@@ -1,55 +1,66 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
-// Primary font - clean, modern geometric sans-serif (like pariola.dev)
-const inter = Inter({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jerrystudios.vercel.app"),
-  title: {
-    default: "Jeremiah Egemonye — Frontend & Mobile Developer",
-    template: "%s | Jeremiah Egemonye",
-  },
+  metadataBase: new URL("https://portfolio-next-livid-rho.vercel.app"),
+  title:
+    "Jeremiah Egemonye | Frontend & Mobile Developer - React, React Native, Next.js",
   description:
-    "Frontend and mobile developer focused on craft, clarity, and user experience. Building thoughtful digital products with React, Next.js, and React Native.",
+    "Jeremiah Egemonye - Result-oriented Frontend and Mobile Developer specializing in React, React Native, Next.js, TypeScript, and modern web technologies. Building accessible, pixel-perfect, and performant web and mobile applications.",
   keywords: [
     "Jeremiah Egemonye",
     "Frontend Developer",
     "Mobile Developer",
     "React Developer",
-    "Next.js Developer",
     "React Native Developer",
-    "TypeScript",
-    "UI/UX Developer",
-    "Web Developer",
-    "Portfolio",
+    "Next.js Developer",
+    "TypeScript Developer",
     "Software Engineer",
-    "Website maker",
+    "Web Developer",
+    "JavaScript Developer",
+    "UI Developer",
+    "Mobile App Developer",
+    "Fullstack Developer",
+    "Nigeria Developer",
+    "Remote Developer",
+    "GSAP",
+    "Tailwind CSS",
+    "Node.js",
+    "GraphQL",
+    "AWS",
+    "Portfolio",
   ],
   authors: [
     { name: "Jeremiah Egemonye", url: "https://jerrystudios.vercel.app" },
   ],
   creator: "Jeremiah Egemonye",
   publisher: "Jeremiah Egemonye",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://jerrystudios.vercel.app",
-    title: "Jeremiah Egemonye — Frontend & Mobile Developer",
+    url: "https://portfolio-next-livid-rho.vercel.app",
+    siteName: "Jeremiah Egemonye - Frontend & Mobile Developer",
+    title: "Jeremiah Egemonye | Frontend & Mobile Developer",
     description:
-      "Frontend and mobile developer focused on craft, clarity, and user experience.",
-    siteName: "Jeremiah Egemonye",
+      "Result-oriented Frontend and Mobile Developer building accessible, pixel-perfect, and performant web and mobile applications with React, React Native, and Next.js.",
     images: [
       {
         url: "/og-image.png",
@@ -63,7 +74,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jeremiah Egemonye — Frontend & Mobile Developer",
     description:
-      "Frontend and mobile developer focused on craft, clarity, and user experience.",
+      "Result-oriented Frontend and Mobile Developer specializing in React, React Native, Next.js, and modern web technologies.",
     creator: "@_jerry0x",
     images: ["/og-image.png"],
   },
@@ -78,44 +89,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: [
-      {
-        url: "/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-    ],
-    apple: "/android-chrome-192x192.png",
+  verification: {
+    google: "2-ct8bLqtRWkFDsoK25Y1NgBUwiux01JV0hLHYDUWyM",
   },
-  manifest: "/manifest.json",
-  alternates: {
-    canonical: "https://jerrystudios.vercel.app",
-  },
-};
-
-// JSON-LD structured data for rich search results
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Jeremiah Egemonye",
-  url: "https://jerrystudios.vercel.app",
-  jobTitle: "Frontend & Mobile Developer",
-  description:
-    "Frontend and mobile developer focused on craft, clarity, and user experience.",
-  sameAs: [
-    "https://github.com/ttjerry",
-    "https://twitter.com/_jerry0x",
-    "https://linkedin.com/in/jeremiah-egemonye",
-  ],
-  knowsAbout: [
-    "React",
-    "Next.js",
-    "React Native",
-    "TypeScript",
-    "Frontend Development",
-    "Mobile Development",
-  ],
 };
 
 export default function RootLayout({
@@ -124,12 +100,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

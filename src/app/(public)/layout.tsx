@@ -1,6 +1,7 @@
-"use client";
-
-import Link from "next/link";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { StarfieldBackground } from "@/components/starfield-background";
+import { SocialSidebar } from "@/components/social-sidebar";
 
 export default function PublicLayout({
   children,
@@ -9,17 +10,13 @@ export default function PublicLayout({
 }) {
   return (
     <>
-      <main>{children}</main>
-      <footer className="px-6 md:px-12 lg:px-24 py-16">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p className="text-sm tracking-wide text-(--muted-foreground)">
-            © {new Date().getFullYear()} Jeremiah Egemonye
-          </p>
-          <p className="text-xs text-(--foreground-dim)">
-            Built with craft and care
-          </p>
-        </div>
-      </footer>
+      <StarfieldBackground />
+      <SocialSidebar />
+      <div className="relative z-10">
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </div>
     </>
   );
 }

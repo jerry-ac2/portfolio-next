@@ -35,6 +35,12 @@ export default function EditProjectPage() {
     githubUrl: "",
   });
 
+  useEffect(() => {
+    if (id) {
+      fetchProject(id);
+    }
+  }, [id, fetchProject]);
+
   const fetchProject = useCallback(
     async (projectId: string) => {
       try {
@@ -69,12 +75,6 @@ export default function EditProjectPage() {
     },
     [router]
   );
-
-  useEffect(() => {
-    if (id) {
-      fetchProject(id);
-    }
-  }, [id, fetchProject]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
