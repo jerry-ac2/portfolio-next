@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit, Source_Serif_4 } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
-// Primary font - clean, modern sans-serif with personality
-const outfit = Outfit({
+// Primary font - clean, modern geometric sans-serif (like pariola.dev)
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-// Secondary font - subtle serif for headings that adds character
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -131,7 +124,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${sourceSerif.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"

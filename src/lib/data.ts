@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   slug: string;
   description: string;
+  content?: string; // Detailed project description for the detail page
   technologies: string[];
   imageUrl: string;
   liveUrl?: string;
