@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
+import { Instrument_Serif, Geist } from "next/font/google";
 import "./globals.css";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Jeremiah Egemonye | Software Engineer",
@@ -31,7 +47,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body
+        className={`${instrumentSerif.variable} ${geist.variable}`}
+        style={{ fontFamily: "var(--font-sans)" }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
