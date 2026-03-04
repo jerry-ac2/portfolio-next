@@ -10,7 +10,7 @@ export function Nav() {
   return (
     <>
       <nav className="nav">
-        <div className="container nav-inner">
+        <div className="nav-inner">
           <a href="#" className="nav-logo">
             {siteConfig.nameFirst}
             <span style={{ color: "var(--ink-3)", fontWeight: 400 }}>

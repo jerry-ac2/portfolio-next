@@ -5,7 +5,6 @@ export function Hero() {
     <section className="hero">
       <div className="container hero-content">
         <div className="hero-eyebrow">
-          <span className="hero-eyebrow-line" />
           <span className="hero-eyebrow-text">{hero.eyebrow}</span>
         </div>
 
@@ -14,10 +13,11 @@ export function Hero() {
           <span className="hero-name-italic">{siteConfig.nameLast}</span>
         </h1>
 
-        <p
+        {/* <p
           className="hero-bio"
           dangerouslySetInnerHTML={{ __html: hero.bio }}
-        />
+        /> */}
+        <p className="hero-bio">{hero.bio}</p>
 
         <div className="hero-ctas">
           <a href={hero.ctaPrimary.href} className="btn-primary">

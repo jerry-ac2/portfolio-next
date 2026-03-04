@@ -19,8 +19,7 @@ export const siteConfig = {
 export const hero = {
   eyebrow: "Software Engineer & Builder",
   bio: `I design and build software that feels considered. Currently focused on
-full-stack web and mobile applications, previously at
-<a href="#experience" class="accent-link">Adashi</a>. I care about
+  full-stack web and mobile applications. I care about
 typography, clear interfaces, and shipping things that work.`,
   ctaPrimary: { label: "Get in touch", href: "#contact" },
   ctaSecondary: { label: "View work", href: "#work" },
